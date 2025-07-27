@@ -1,0 +1,185 @@
+{
+  "Header.Item1": "À propos de moi",
+  "Header.Item2": "Expérience",
+  "Header.Item3": "Projets",
+  "Header.Item4": "Contact",
+  "Header.cvBtn": "Mon CV",
+  "Header.cvName": "CV_Clement_Davin.pdf",
+  "Banner.Pretitle": "Bonjour ! Je m'appelle",
+  "Banner.subtitle": "Développeur logiciel",
+  "Banner.Description": "Je suis <span class='underline'>ingénieur en informatique</span> diplômé de l'EPITA, avec <span class='underline'>4 ans d'expérience</span> en développement fullstack chez Thales. Je développe des interfaces modernes, des jeux multijoueurs, des applications web collaboratives et bien plus encore. Je me spécialise en <span class='underline'>Angular</span>, <span class='underline'>Node.js</span> et <span class='underline'>Unreal Engine 5</span>, en mettant l’accent sur la qualité, la performance et l’expérience utilisateur.",
+  "Banner.ActionBtn": "Contactez-moi",
+  "AboutMe.Title": "À propos de moi",
+  "AboutMe.Paragraphs": [
+    "Diplômé de <span class='underline'>l'EPITA </span> avec un semestre aux États-Unis, je suis ingénieur en informatique spécialisé en <span class='underline'>développement fullstack</span>. Fort de 4 ans d’expérience chez <span class='underline'>Thales</span>, je conçois des interfaces web modernes et des systèmes de restitution de vols en <span class='underline'>Angular</span>, alliant performance et expérience utilisateur.",
+    "En parallèle, je développe des projets personnels, allant de jeux multijoueurs en ligne sous <span class='underline'>Unreal Engine 5</span> à des applications web <span class='underline'>MERN</span> pour la gestion quotidienne et le partage de données en temps réel. Mon travail s’appuie sur des technologies telles que <span class='underline'>Angular</span>, <span class='underline'>React</span>, <span class='underline'>TypeScript</span>, <span class='underline'>Node.js</span>, <span class='underline'>MongoDB</span> et <span class='underline'>Unreal Engine 5</span>  , avec une forte attention portée à la qualité, la performance et l’expérience interactive.",
+    "Certifié <span class='underline'>Scrum Master (PSM I)</span>, j’applique une approche agile pour transformer des idées en solutions complètes, qu’il s’agisse de web ou de jeu vidéo.",
+    "Parmi les technologies que j’utilise régulièrement, on trouve :"
+  ],
+  "Experience.Title": "Expérience",
+  "FeatureProjects.Title": "Mes projets",
+  "FeatureProjects.Label": "Projet mis en avant",
+  "Contact.Pretitle": "Et maintenant ?",
+  "Contact.Title": "Discutons ensemble !",
+  "Contact.Content": "Animé par la curiosité et la créativité, j’explore constamment de nouvelles façons d’allier technologie, design et interactivité. Je suis ouvert à de nouvelles opportunités et collaborations dans le développement logiciel ou de jeux vidéo. N’hésitez pas à me contacter pour que nous construisions ensemble quelque chose d’extraordinaire !",
+  "Contact.Btn": "Me contacter",
+  "Experience.Jobs": [
+    {
+      "Tab": "Thales",
+      "Title": "Développeur Frontend",
+      "Date": "Depuis 2021",
+      "Description": [
+        "Développement d’un système de debriefing et de restitution de vol en Typescript/Angular/Cesium.",
+        "Développement d’une application web fullstack (TypeScript, Express, MongoDB, Rollup, Node, Lerna) permettant le partage de données via une API dédiée.",
+        "Scrum Master certifié : animation des cérémonies, coordination d’équipe, documentation et qualité logicielle."
+      ]
+    },
+    {
+      "Tab": "Stage Java",
+      "Title": "Stage 4e année",
+      "Date": "2019",
+      "Description": [
+        "Amélioration d’un outil d’aide à l’analyse de plan de vol en Java."
+      ]
+    },
+    {
+      "Tab": "Stage VINCI",
+      "Title": "Stage Assistant développeur",
+      "Date": "2017",
+      "Description": [
+        "Développement d’une interface utilisateur pour un projet de régulation de trafic routier."
+      ]
+    }
+  ],
+  "FeatureProjects.Projects": [
+    {
+      "Title": "NightMaze",
+      "Description": "Développement complet de NightMaze, jeu multijoueur coopératif d’exploration et de survie dans un labyrinthe hanté généré aléatoirement sous Unreal Engine 5.7 (C++/Blueprints) disponible en playtest sur Steam : génération procédurale via PCG Graph, IA dynamique (Behavior Trees, AI Perception), interface coopérative (HUD, inventaire partagé, notifications réseau), intégration Steamworks (lobbies, matchmaking, réplication avancée), optimisation des performances (Nanite, LODs, Level Streaming)",
+      "imgs": [],
+      "demoLink": "https://store.steampowered.com/app/3744640/NightMaze/",
+      "Technologies": [
+        "Unreal Engine 5",
+        "Blueprint",
+        "C++",
+        "Steam SDK",
+        "Multijoueur",
+        "PCG",
+        "Blender"
+      ]
+    },
+    {
+      "Title": "Application MERN",
+      "Description": "HomeApp est une application web collaborative développée avec la stack MERN (MongoDB, Express.js, React, Node.js). Elle permet de gérer des listes de courses partagées, d’organiser un agenda personnel ou familial et d’envoyer des rappels automatisés pour les événements importants. L’application inclut un système de connexion et d’authentification sécurisé pour gérer les comptes utilisateurs. Le frontend est entièrement responsive pour une utilisation sur desktop et mobile, tandis que le backend garantit une gestion robuste des données et des API sécurisées. Elle propose également des notifications asynchrones, des mises à jour en temps réel pour les tâches collaboratives et une expérience utilisateur intuitive pour simplifier l’organisation quotidienne.",
+      "imgs": [
+        "assets/images/home-application1.png",
+        "assets/images/home-application2.png",
+        "assets/images/home-application3.png"
+      ],
+      "ghLink": "https://github.com/Nevyrr/Home-Application",
+      "demoLink": "https://home-application.onrender.com/",
+      "Technologies": [
+        "MongoDB",
+        "Express.js",
+        "React.js",
+        "Node.js"
+      ]
+    },
+    {
+      "Title": "Serveur de fichiers",
+      "Description": "Développement d’une application web full-stack sécurisée permettant aux utilisateurs de téléverser, stocker et partager des fichiers via une interface interne avec gestion des rôles et des accès. Le backend a été réalisé en TypeScript avec Node.js, Express.js et MongoDB, incluant l’authentification, la gestion des accès et des API REST. Le frontend a été développé en TypeScript au sein d’un monorepo Lerna avec Rollup pour la modularisation et une interface réactive. L’ensemble de l’architecture a été dockerisé et intégré à une pipeline CI/CD Jenkins afin d’automatiser la construction, les tests et les déploiements, garantissant sécurité, maintenabilité et automatisation.",
+      "imgs": [],
+      "Technologies": [
+        "TypeScript",
+        "Express.js",
+        "Docker",
+        "Jenkins",
+        "MongoDB",
+        "Node.js",
+        "Rollup"
+      ]
+    },
+    {
+      "Title": "Distributeur de savon connecté",
+      "Description": "Développement d’un distributeur de savon connecté basé sur Arduino, capable d’estimer le niveau de savon restant en fonction du nombre d’utilisations et de la capacité du réservoir. Lorsque le distributeur détecte qu’il est presque vide, il envoie automatiquement une notification à une application mobile développée avec Android Studio.",
+      "imgs": [],
+      "Technologies": [
+        "Arduino",
+        "Android Studio"
+      ]
+    },
+    {
+      "Title": "GNK (Genotron)",
+      "Description": "Jeu de rôle grandeur nature réalisé en équipe. Création de scénarios à multiples intrigues. Encadré par un coach et géré en méthode agile.",
+      "imgs": [],
+      "Technologies": [
+        "Agile",
+        "Organisation",
+        "Conception de jeu",
+        "Coordination"
+      ]
+    },
+    {
+      "Title": "Projet Cloud",
+      "Description": "Développement d’un cloud hybride avec OpenStack pour la partie privée et AWS pour la partie publique.",
+      "imgs": [],
+      "Technologies": [
+        "OpenStack",
+        "AWS",
+        "Cloud",
+        "Virtualisation"
+      ]
+    },
+    {
+      "Title": "Projet Web",
+      "Description": "Création d’un site de billetterie en ligne pour l’école en utilisant Django (Python).",
+      "imgs": [],
+      "Technologies": [
+        "Python",
+        "Django",
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "Title": "Chess",
+      "Description": "Développement d’un jeu d’échecs en C++ avec une intelligence artificielle intégrée.",
+      "imgs": [],
+      "Technologies": [
+        "C++",
+        "Jeu",
+        "IA"
+      ]
+    },
+    {
+      "Title": "Spider",
+      "Description": "Développement d’un serveur HTTP en C++.",
+      "imgs": [],
+      "Technologies": [
+        "C++",
+        "HTTP",
+        "Backend"
+      ]
+    },
+    {
+      "Title": "42sh",
+      "Description": "Développement from scratch d’un shell Linux en C.",
+      "imgs": [],
+      "Technologies": [
+        "C",
+        "Shell",
+        "Systèmes",
+        "Linux"
+      ]
+    },
+    {
+      "Title": "Formula One",
+      "Description": "Programmation d’une IA en C pour piloter une voiture et finir une course automatiquement le plus rapidement possible.",
+      "imgs": [],
+      "Technologies": [
+        "C",
+        "IA",
+        "Simulation"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+/* =========================
+   🎨 Thème clair (Light)
+   ========================= */
+:root {
+
+  --main-font: Calibre, San Francisco, SF Pro Text, -apple-system, system-ui, BlinkMacSystemFont, Roboto, Helvetica Neue, Segoe UI, Arial, sans-serif;
+  --code-font: SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console, Monaco, Monospace;
+  /* Couleurs principales */
+  --primary: #4F46E5;
+  /* Violet/Bleu principal */
+  --secondary: #6C63FF;
+  /* Violet clair */
+  --accent: #9F8CFF;
+  /* Accentuation douce */
+
+  /* Couleurs boutons */
+  --btn-bg: var(--primary);
+  /* Fond bouton */
+  --btn-border: #4338CA;
+  /* Légèrement plus foncé */
+  --btn-hover-bg: #4338CA;
+  /* Hover plus foncé */
+  --btn-hover-border: #3730A3;
+  /* Hover border encore plus foncé */
+
+  /* Fond et bordures */
+  --bg: #F5F7FF;
+  --bg-header: #EDF0FD;
+  --bg-panel: #FFFFFF;
+  --border: #a2c1ff;
+  --hover: #E0E7FF;
+
+  /* Couleurs de texte */
+  --text-main: #0A192F;
+  /* Texte normal */
+  --text-heading: #111827;
+  /* Titres H1/H2 */
+  --text-subheading: #374151;
+  /* Sous-titres H3/H4 */
+  --text-muted: #6B7280;
+  /* Texte secondaire */
+}
+
+/* =========================
+   🌙 Thème sombre (Dark)
+   ========================= */
+[data-bs-theme="dark"] {
+  /* Couleurs principales */
+  --primary: #6C63FF;
+  --secondary: #9F8CFF;
+  --accent: #BBAAFF;
+
+  /* Couleurs boutons */
+  --btn-bg: var(--primary);
+  --btn-border: #5B52E0;
+  --btn-hover-bg: #584DE0;
+  --btn-hover-border: #483CC4;
+
+  /* Fond et bordures */
+  --bg: #0A192F;
+  --bg-header: #172a4c;
+  --bg-panel: #1d2f4d;
+  --border: #2d54a3;
+  --hover: #1C2A4A;
+
+  /* Couleurs de texte */
+  --text-main: #E6F1FF;
+  /* Texte normal */
+  --text-heading: #F8FAFC;
+  /* Titres H1/H2 */
+  --text-subheading: #CBD5E1;
+  /* Sous-titres H3/H4 */
+  --text-muted: #94A3B8;
+  /* Texte secondaire */
+}
+
+/* =========================
+   🔹 Bootstrap Integration
+   ========================= */
+:root,
+[data-bs-theme="dark"] {
+  --bs-body-bg: var(--bg);
+  --bs-body-color: var(--text-main);
+  --bs-primary: var(--primary);
+  --bs-secondary: var(--secondary);
+  --bs-border-color: var(--border);
+
+  /* Boutons Bootstrap */
+  --bs-btn-bg: var(--btn-bg);
+  --bs-btn-border-color: var(--btn-border);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: var(--btn-hover-bg);
+  --bs-btn-hover-border-color: var(--btn-hover-border);
+  --bs-btn-hover-color: #fff;
+}

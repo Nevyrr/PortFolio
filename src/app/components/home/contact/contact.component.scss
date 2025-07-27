@@ -1,0 +1,66 @@
+.contact {
+    width: 50%;
+    margin: 0 auto;
+
+    .container {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .contact-title {
+        position: relative;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        font-size: 60px;
+        font-weight: 600;
+        color: var(--text-heading);
+        margin: auto;
+        width: fit-content;
+    }
+
+    .contact-pre-title {
+        position: relative;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        font-size: 1.5rem;
+        display: block;
+        color: var(--primary);
+        font-family: var(--code-font);
+        font-weight: normal;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+}
+
+.div-btn-banner {
+    margin: 1rem;
+    justify-self: center;
+
+    .btn-primary {
+        color: var(--primary);
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        font-weight: bold;
+        padding: 0.6rem 1.5rem;
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        &:active {
+            transform: scale(0.97);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        a {
+            color: var(--text-heading);
+        }
+    }
+}

@@ -1,0 +1,29 @@
+<section class="section banner">
+
+    <div class="container">
+        <div class="section-box section-box-banner">
+            <div class="content">
+                <div class="banner-pretitle">
+                    <h1>{{"Banner.Pretitle" | translate}}</h1>
+                </div>
+                <div class='banner-title'>
+                    <h2 class="banner-name">Clément Davin.</h2>
+                    <h3 class="banner-subtitle">{{"Banner.subtitle" | translate}}</h3>
+                </div>
+                <div class='banner-description'>
+                    <p [innerHTML]='"Banner.Description" | translate' class="mt-4"></p>
+                </div>
+            </div>
+            <div class="div-btn-banner">
+                <button class="btn btn-primary">
+                    <a href="mailto:clement.davin998@gmail.com">
+                        {{ "Banner.ActionBtn" | translate }}
+                    </a>
+                </button>
+            </div>
+        </div>
+        <div class="photo-profil-container">
+            <img src="assets/images/photo-profil.png" class="photo-profil" alt="Ma photo" />
+        </div>
+    </div>
+</section>

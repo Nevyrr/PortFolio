@@ -1,0 +1,105 @@
+<section class="section about" id='about' tabindex="0">
+    <div class="container">
+        <div class="section-box">
+            <div class="about-title" data-animate="slideInUp" data-animate-duration="1000">
+                <h3 class="section-title">
+                    <span class='n-section-title'>01.</span> {{"AboutMe.Title" | translate}}
+                </h3>
+            </div>
+            <div class="row">
+                <div class="mb-4">
+                    <div class="about-description">
+                        <p *ngFor='let text of "AboutMe.Paragraphs" | translate; let i = index'
+                           [innerHTML]="text"
+                           data-animate="fadeInLeft"
+                           [attr.data-animate-delay]="200 + (i * 300)"
+                           data-animate-duration="800">
+                        </p>
+                        <ul class="skills-list" data-animate="fadeInUp" data-animate-delay="800">
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">Angular </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">RxJS </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">React </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">MERN Stack </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">Node </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">HTML &amp; (S)CSS </span>
+                            </li>
+                             <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">Cesium </span>
+                            </li>
+                             <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">ThreeJs </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">Express </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">Jenkins </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">Docker </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">CI / CD </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">Bitbucket </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">Jira </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">Unreal Engine </span>
+                            </li>
+                            <li class="skill-element"
+                                data-animate="scaleIn"
+                                data-animate-delay="1000">
+                                <span class="underline">Unity </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

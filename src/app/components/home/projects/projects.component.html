@@ -1,0 +1,54 @@
+<section class="section projects" id='projects'>
+    <div class="container">
+        <div class="section-box">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h3 class="section-title">
+                    <span class='n-section-title'>03.</span> {{"FeatureProjects.Title" | translate}}
+                </h3>
+            </div>
+
+            <div *ngFor='let project of "FeatureProjects.Projects" | translate; let i = index'
+                class="d-flex project-container" data-aos="fade-up" data-aos-duration="1000">
+
+                <div class="h-100">
+                    <div class="project-box">
+                        <h4 class="feature-project"> {{"FeatureProjects.Label" | translate}} </h4>
+
+                        <div class="d-flex justify-content-between">
+                            <span class="project-name"> {{project.Title}} </span>
+
+                            <div class="project-links">
+                                <a *ngIf="project['ghLink']" style='color: inherit' [href]="project['ghLink']"
+                                    target="_blank"><i class="ml-3 fab fa-github"></i></a>
+                                <a *ngIf="project['demoLink']" style='color: inherit' [href]="project['demoLink']"
+                                    target="_blank"><i class="ml-3 fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="project-description-box" (click)='debug()'>
+                            <p class="mb-0" [innerHTML]="project.Description"></p>
+                        </div>
+
+                        <div class="m-2 w-100 img-project">
+                            <ngb-carousel #carousel class="img-project-carousel" *ngIf="project.imgs.length > 0" interval="3000"
+                                pauseOnHover="true" pauseOnFocus="true">
+                                <ng-template ngbSlide *ngFor="let img of project.imgs; let i = index">
+                                    <div #imgContainer class="img-container">
+                                        <img class="img-feature-project rounded" [src]="img" [alt]="project.Title" />
+                                    </div>
+                                </ng-template>
+                            </ngb-carousel>
+                        </div>
+
+                        <ul [class.justify-content-end]='i%2==0' [class.justify-content-start]='i%2!=0'
+                            class="project-skills">
+                            <li *ngFor='let technology of project.Technologies' class="ml-3">
+                                <span class="underline technology">{{technology}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,36 @@
+.about{
+    .about-description {
+        margin-top: 30px;
+    }
+
+    .skills-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(8em, 10em));
+        overflow: hidden;
+        padding: 0;
+        margin: 20px 0 0 0;
+        list-style: none;
+    }
+
+    .skill-element {
+        position: relative;
+        margin-bottom: 10px;
+        padding-left: 20px;
+        font-size: 13px;
+        font-family: var(--code-font);
+        color: var( --text-subheading);
+        span{
+          padding-bottom: 5px;
+        }
+
+        &:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 14px;
+            line-height: 12px;
+        }
+    }
+
+}
