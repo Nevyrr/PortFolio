@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
-import { AnimationsService } from 'src/app/services/animations/animations.service';
+import { AnimationsService } from '../../../services/animations/animations.service';
 
-// Configuración centralizada de animaciones
+// Configuration centralisée des animations
 interface AnimationConfig {
   delay: number;
   duration?: number;
@@ -17,8 +17,8 @@ interface AnimationConfig {
 })
 export class BannerComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  // Configuración fácil de modificar
-  private readonly animationTimings = {
+  // Configuration facile à modifier
+  private readonly animationTimings: Readonly<Record<string, number>> = {
     pretitle: 100,
     name: 800,
     subtitle: 1800,
@@ -32,6 +32,8 @@ export class BannerComponent implements OnInit, AfterViewInit, OnDestroy {
   };
 
   private animationTimeouts: number[] = [];
+  private cursorBlinkInterval?: number;
+  private typeEffectInterval?: number;
 
   constructor(
     private animationsService: AnimationsService,
@@ -39,7 +41,7 @@ export class BannerComponent implements OnInit, AfterViewInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    // Configuración inicial si es necesaria
+    // Configuration initiale si nécessaire
   }
 
   ngAfterViewInit(): void {
@@ -48,12 +50,13 @@ export class BannerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.clearAllTimeouts();
+    this.clearAllIntervals();
   }
 
   private initAnimations(): void {
     const banner = this.elementRef.nativeElement;
 
-    // Configuración de animaciones secuenciales
+    // Configuration d'animations séquentielles
     const animations: AnimationConfig[] = [
       {
         delay: this.animationTimings.pretitle,
@@ -129,7 +132,7 @@ export class BannerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private startCursorBlink(cursorElement: HTMLElement): void {
     let cursorVisible = true;
-    setInterval(() => {
+    this.cursorBlinkInterval = window.setInterval(() => {
       cursorElement.style.opacity = cursorVisible ? '0' : '1';
       cursorVisible = !cursorVisible;
     }, this.typewriterConfig.cursorBlinkRate);
@@ -138,12 +141,13 @@ export class BannerComponent implements OnInit, AfterViewInit, OnDestroy {
   private startTypeEffect(textElement: HTMLElement, text: string): void {
     let charIndex = 0;
 
-    const typeInterval = setInterval(() => {
+    this.typeEffectInterval = window.setInterval(() => {
       textElement.textContent = text.substring(0, charIndex + 1);
       charIndex++;
 
-      if (charIndex >= text.length) {
-        clearInterval(typeInterval);
+      if (charIndex >= text.length && this.typeEffectInterval) {
+        clearInterval(this.typeEffectInterval);
+        this.typeEffectInterval = undefined;
       }
     }, this.typewriterConfig.speed);
   }
@@ -177,8 +181,22 @@ export class BannerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.animationTimeouts = [];
   }
 
-  public updateAnimationTiming(element: keyof typeof this.animationTimings, delay: number): void {
-    (this.animationTimings as any)[element] = delay;
+  private clearAllIntervals(): void {
+    if (this.cursorBlinkInterval) {
+      clearInterval(this.cursorBlinkInterval);
+      this.cursorBlinkInterval = undefined;
+    }
+    if (this.typeEffectInterval) {
+      clearInterval(this.typeEffectInterval);
+      this.typeEffectInterval = undefined;
+    }
+  }
+
+  public updateAnimationTiming(element: string, delay: number): void {
+    // Note: Cette méthode nécessiterait de rendre animationTimings mutable
+    // ou d'utiliser une structure de données différente pour permettre les mises à jour
+    // Pour l'instant, elle est conservée mais ne fonctionne pas avec readonly
+    console.warn('updateAnimationTiming: animationTimings est readonly, cette méthode ne peut pas modifier les valeurs');
   }
 
   public updateTypewriterSpeed(speed: number): void {

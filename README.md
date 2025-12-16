@@ -35,12 +35,12 @@ Développement fullstack en environnement critique :
 
 ## 📸 Aperçu
 
-![screenshot](./assets/preview.png)
+https://portfolio-2i5b.onrender.com/fr
 
 ## ▶️ Lancer le projet
 
 ```bash
 git clone https://github.com/Nevyrr/PortFolio.git
-cd portFolio
+cd PortFolio
 npm install
 ng serve

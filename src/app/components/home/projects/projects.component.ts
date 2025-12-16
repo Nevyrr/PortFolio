@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-projects',
@@ -7,5 +7,4 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
     standalone: false
 })
 export class ProjectsComponent {
-    @ViewChild('imgContainer') imgContainer: ElementRef;
 }

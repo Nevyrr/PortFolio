@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { trigger, style, query, transition, stagger, animate } from '@angular/animations'
+import { trigger, style, query, transition, stagger, animate } from '@angular/animations';
 import { UntypedFormControl } from '@angular/forms';
-import { LanguageService } from 'src/app/services/language/language.service';
-
+import { LanguageService } from '../../../services/language/language.service';
 
 @Component({
     selector: 'app-header',
@@ -23,13 +22,9 @@ import { LanguageService } from 'src/app/services/language/language.service';
     ],
     standalone: false
 })
-
-
-
 export class HeaderComponent implements OnInit {
 
-    responsiveMenuVisible: Boolean = false;
-    pageYPosition: number;
+    responsiveMenuVisible: boolean = false;
     languageFormControl: UntypedFormControl = new UntypedFormControl();
 
     constructor(
@@ -46,10 +41,17 @@ export class HeaderComponent implements OnInit {
     }
 
     public scroll(el: string): void {
-        if (document.getElementById(el)) {
-            document.getElementById(el).scrollIntoView({ behavior: 'smooth' });
+        const element = document.getElementById(el);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
         } else {
-            this.router.navigate(['/home']).then(() => document.getElementById(el).scrollIntoView({ behavior: 'smooth' }));
+            const currentLanguage = this.languageService.language;
+            this.router.navigate([`/${currentLanguage}`]).then(() => {
+                const elementAfterNav = document.getElementById(el);
+                if (elementAfterNav) {
+                    elementAfterNav.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         }
         this.responsiveMenuVisible = false;
     }
@@ -57,7 +59,7 @@ export class HeaderComponent implements OnInit {
     public downloadCV(): void {
         this.languageService.translateService.get("Header.cvName").subscribe(cvName => {
             window.open(window.location.href + "/../assets/cv/" + cvName, "_blank");
-        })
+        });
     }
 
     public changeLanguage(language: string): void {

@@ -21,10 +21,13 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-@NgModule({ declarations: [
+@NgModule({
+    declarations: [
         AppComponent,
     ],
-    bootstrap: [AppComponent], imports: [BrowserAnimationsModule,
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserAnimationsModule,
         HomeModule,
         GeneralModule,
         BrowserModule,
@@ -39,6 +42,11 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient],
             },
         }),
-        NgbModule], providers: [TranslateService, provideHttpClient(withInterceptorsFromDi())] })
-        
+        NgbModule
+    ],
+    providers: [
+        TranslateService,
+        provideHttpClient(withInterceptorsFromDi())
+    ]
+})
 export class AppModule {}

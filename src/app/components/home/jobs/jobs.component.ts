@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
-import { AnimationsService } from 'src/app/services/animations/animations.service';
+import { AnimationsService } from '../../../services/animations/animations.service';
 
 @Component({
     selector: 'app-jobs',
@@ -9,7 +9,7 @@ import { AnimationsService } from 'src/app/services/animations/animations.servic
 })
 export class JobsComponent implements OnInit, AfterViewInit {
 
-  active = 0
+  active: number = 0;
 
   constructor(
     private animationsService: AnimationsService,
@@ -50,7 +50,7 @@ export class JobsComponent implements OnInit, AfterViewInit {
         delay: 600 + (index * 150)
       });
 
-      // Añadir efectos hover
+      // Ajouter les effets au survol
       this.animationsService.addHoverEffects(tab, ['lift']);
     });
 

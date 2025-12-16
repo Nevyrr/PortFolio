@@ -1,14 +1,14 @@
 <section class="section projects" id='projects'>
     <div class="container">
         <div class="section-box">
-            <div data-aos="fade-up" data-aos-duration="1000">
+            <div>
                 <h3 class="section-title">
                     <span class='n-section-title'>03.</span> {{"FeatureProjects.Title" | translate}}
                 </h3>
             </div>
 
             <div *ngFor='let project of "FeatureProjects.Projects" | translate; let i = index'
-                class="d-flex project-container" data-aos="fade-up" data-aos-duration="1000">
+                class="d-flex project-container">
 
                 <div class="h-100">
                     <div class="project-box">
@@ -25,7 +25,7 @@
                             </div>
                         </div>
 
-                        <div class="project-description-box" (click)='debug()'>
+                        <div class="project-description-box">
                             <p class="mb-0" [innerHTML]="project.Description"></p>
                         </div>
 

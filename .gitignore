@@ -53,3 +53,9 @@ Thumbs.db
 
 # Deployment artifacts
 public/
+
+# Angular Service Worker - generated files (keep ngsw-config.json)
+**/ngsw-worker.js
+**/ngsw.json
+**/safety-worker.js
+!ngsw-config.json
