@@ -7,7 +7,7 @@
           {{ "Experience.Title" | translate }}
         </h3>
       </div>
-      <div class="jobs-tabs" data-animate="fadeInUp" data-animate-duration="1200" data-animate-delay="300">
+      <div class="jobs-tabs" data-animate="fadeInUp" data-animate-duration="600" data-animate-delay="300">
         <ul
           ngbNav
           #nav="ngbNav"
@@ -20,7 +20,7 @@
             [title]="job.Tab"
             [ngbNavItem]="i"
             data-animate="scaleIn"
-            [attr.data-animate-delay]="600 + (i * 150)"
+            [attr.data-animate-delay]="100 + (i * 150)"
           >
             <a ngbNavLink>{{ job.Tab }}</a>
             <ng-template ngbNavContent>
@@ -29,7 +29,6 @@
                 <span class="company-tab-content">{{ job.Tab }}</span>
               </h4>
               <h5 class="job-time">{{ job.Date }}</h5>
-              <!-- {{job.Description | json}} -->
               <p
                 *ngFor="
                   let jobDescriptionParagraph of job.Description;
@@ -38,9 +37,8 @@
                 class="job-description"
                 [innerHTML]="jobDescriptionParagraph | translate"
                 data-animate="fadeInLeft"
-                [attr.data-animate-delay]="i * 200"
+                [attr.data-animate-delay]="i * 100"
               ></p>
-              <span></span>
             </ng-template>
           </li>
         </ul>

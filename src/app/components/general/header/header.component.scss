@@ -16,31 +16,28 @@
     }
 
     .link-buttons-container {
-        width: 4rem;
-        margin-left: 2em;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        gap: 1rem;
+        margin-left: 1rem;
 
         .link-button {
-            color: var(--primary);
+            color: var(--text-subheading);
+            font-size: 1.25rem;
+            transition: all 0.2s ease;
+
+            &:hover {
+                color: var(--primary);
+                transform: translateY(-2px);
+            }
         }
     }
 
     .menu-ul {
         align-items: center;
+        gap: 0.5rem;
 
         li {
-            margin: 0px 13px;
-        }
-
-        // First and Last li has no margin
-        li:first-child {
-            margin-left: 0px;
-        }
-
-        li:last-child {
-            margin-right: 0px;
+            margin: 0;
         }
     }
 
@@ -206,11 +203,37 @@
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
 }
 
-@media (max-width: 1000px) {
+// Tablette
+@media (max-width: 1024px) {
     .main-navbar {
         .nav-link {
             margin: 0;
             padding: .5rem .7rem;
+            font-size: 0.75rem;
+        }
+
+        .menu-ul {
+            gap: 0.25rem;
+        }
+    }
+}
+
+// Desktop standard et grands écrans
+@media (min-width: 1025px) {
+    .main-navbar {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+    }
+}
+
+@media (min-width: 1921px) {
+    .main-navbar {
+        .container {
+            max-width: 1400px;
+            padding: 0 3rem;
         }
     }
 }
@@ -240,29 +263,13 @@
 }
 
 .language-container-selector.active {
-    margin: 0 !important;
-    color: var(--text-heading) !important;
-    padding: 11px 8px !important;
-    text-align: center;
-    background: var(--bg) !important;
+    background: var(--hover) !important;
 }
 
 .language-container-selector:hover {
-    background: var(--bg) !important;
+    background: var(--hover) !important;
 }
 
-// .language-container-selector.active:after {
-//     content: " ";
-//     background: #58e2c4;
-//     width: 61%;
-//     height: 1px;
-//     position: absolute;
-//     border-radius: 10px;
-//     left: 0;
-//     right: 0;
-//     margin: auto;
-//     margin-top: 21px;
-// }
 .arrow-language {
     font-size: 10px;
     height: 10px;
@@ -275,12 +282,12 @@
 }
 
 ::ng-deep .dropdown-menu.show {
-    padding: 0 !important;
-    border-radius: 7px !important;
-    background: #ccd6f6 !important;
-    margin-top: 10px !important;
-    left: 20px !important;
-    box-shadow: 0 10px 30px -15px rgb(2 12 27 / 70%);
+    padding: 0.5rem 0 !important;
+    border-radius: 8px !important;
+    background: var(--bg-panel) !important;
+    margin-top: 0.5rem !important;
+    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.3);
+    border: 1px solid var(--border);
 }
 
 .arrow-active {

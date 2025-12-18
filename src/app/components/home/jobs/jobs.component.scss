@@ -1,79 +1,65 @@
 ::ng-deep .jobs .jobs-tabs {
     display: flex;
+    gap: 2rem;
 
     .tab-content {
-        margin-left: 38px;
+        flex: 1;
+        margin-left: 0;
     }
 
     ul {
         display: block;
-        width: 25%;
+        width: 200px;
+        min-width: 200px;
         border: none;
-    }
-
-    a.active {
-        background-color: var(--bg-panel) !important;
-        color: var(--primary)!important;
-        border-color: transparent !important;
-        border-radius: 0px;
-    }
-    
-    a:hover {
-        background-color: var(--hover) !important;
-        color: var(--primary)!important;
-        border-color: transparent !important;
-        border-radius: 0px;
+        padding: 0;
+        margin: 0;
     }
 
     a {
-        display: inline-block;
-        -webkit-text-decoration: none;
-        text-decoration: none;
-        -webkit-text-decoration-skip-ink: auto;
-        text-decoration-skip-ink: auto;
-        color: inherit;
-        position: relative;
-        -webkit-transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-        transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-        cursor: pointer;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
         align-items: center;
         width: 100%;
+        padding: 0.75rem 1.25rem;
+        text-decoration: none;
+        color: var(--text-subheading);
+        font-family: var(--code-font);
+        font-size: 0.8125rem;
         background-color: transparent;
-        height: 42px;
-        padding: 0 20px 2px;
-        -webkit-transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-        transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+        border-left: 2px solid var(--border);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
         text-align: left;
         white-space: nowrap;
-        font-family: var(--code-font);
-        font-size: 13px;
-        color: var( --text-subheading);
+
+        &:hover {
+            background-color: var(--hover);
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
+
+        &.active {
+            background-color: var(--bg-panel);
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
     }
 
     li {
         border-left: 2px solid var(--border);
-        border-left-width: 2px;
-        border-left-style: solid;
-        border-left-color: rgb(48, 60, 85);
     }
 }
 
 .jobs {
-    width: 90%;
-    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 
     .title-tab-content {
         color: var(--text-heading);
-        font-size: 22px;
-        font-weight: 500;
-        margin-bottom: 5px;
+        font-size: clamp(1.25rem, 3vw, 1.375rem);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
 
         .company-tab-content {
             color: var(--primary);
@@ -82,50 +68,85 @@
 
     .job-time {
         font-family: var(--code-font);
-        font-size: 13px;
+        font-size: 0.8125rem;
         font-weight: normal;
-            -webkit-letter-spacing: 0.05em;
-        -moz-letter-spacing: 0.05em;
-        -ms-letter-spacing: 0.05em;
         letter-spacing: 0.05em;
-        color: var(--text-main);
-        margin-bottom: 30px;
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
     }
     
     .job-description {
         position: relative;
-        padding-left: 30px;
-        margin-bottom: 10px;
-        font-size: 18px;
+        padding-left: 1.75rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--text-subheading);
 
         &:before {
             content: '▹';
             position: absolute;
             left: 0;
             color: var(--primary);
+            font-size: 1rem;
+        }
+    }
+}
+@media (max-width: 768px) {
+    .jobs {
+        .job-description {
+            padding-left: 1.25rem;
+        }
+    }
+
+    ::ng-deep .jobs-tabs {
+        flex-direction: column;
+
+        .tab-content {
+            margin-left: 0;
+        }
+
+        ul {
+            width: 100%;
+            margin-bottom: 2rem;
+            display: flex;
+            overflow-x: auto;
+            gap: 0.5rem;
+        }
+
+        a {
+            border-left: none;
+            border-bottom: 2px solid var(--border);
+            padding: 0.75rem 1rem;
+            white-space: nowrap;
+
+            &.active {
+                border-left: none;
+                border-bottom-color: var(--primary);
+            }
+
+            &:hover {
+                border-left: none;
+                border-bottom-color: var(--primary);
+            }
+        }
+
+        li {
+            border-left: none;
         }
     }
 }
 
-
-
-@media (max-width: 768px) {
+// Grands écrans
+@media (min-width: 1921px) {
     .jobs {
-        .job-description{
-            padding: 0px;
-        }
+        max-width: 1200px;
     }
-    ::ng-deep .jobs-tabs {
-        display: block !important;
 
-        .tab-content{
-            margin-left: 0px !important;
-        }
-
+    ::ng-deep .jobs .jobs-tabs {
         ul {
-            display: block;
-            width: 100% !important;
-            margin-bottom: 50px;
+            width: 220px;
+            min-width: 220px;
         }
     }
 }

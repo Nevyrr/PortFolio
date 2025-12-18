@@ -12,8 +12,8 @@
                         <p *ngFor='let text of "AboutMe.Paragraphs" | translate; let i = index'
                            [innerHTML]="text"
                            data-animate="fadeInLeft"
-                           [attr.data-animate-delay]="200 + (i * 300)"
-                           data-animate-duration="800">
+                           [attr.data-animate-delay]="100 + (i * 100)"
+                           data-animate-duration="400">
                         </p>
                         <ul class="skills-list" data-animate="fadeInUp" data-animate-delay="800">
                             <li class="skill-element"
