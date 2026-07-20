@@ -30,12 +30,13 @@ export class ContactComponent implements AfterViewInit {
       });
     }
 
-    // Animer le titre principal avec typewriter
+    // Animer le titre principal
     const mainTitle = contactSection.querySelector('.contact-title');
     if (mainTitle) {
       this.animationsService.observeElement(mainTitle, {
-        type: 'typewriter',
-        delay: 500
+        type: 'slideInUp',
+        duration: 700,
+        delay: 200
       });
     }
 
@@ -44,8 +45,8 @@ export class ContactComponent implements AfterViewInit {
     if (description) {
       this.animationsService.observeElement(description, {
         type: 'morphIn',
-        duration: 1200,
-        delay: 2500
+        duration: 1000,
+        delay: 1000
       });
     }
 
@@ -55,7 +56,7 @@ export class ContactComponent implements AfterViewInit {
       this.animationsService.observeElement(contactButton.parentElement as HTMLElement, {
         type: 'scaleIn',
         duration: 800,
-        delay: 3500
+        delay: 1800
       });
 
       // Ajouter des effets au survol spéciaux au bouton

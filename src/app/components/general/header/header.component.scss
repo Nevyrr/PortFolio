@@ -18,9 +18,10 @@
     }
 
     .nav-container {
-        display: flex;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
         align-items: center;
-        justify-content: space-between;
+        column-gap: 2rem;
         width: 100%;
     }
 
@@ -38,10 +39,18 @@
         }
     }
 
-    .menu-ul {
+    // On desktop, the wrapper disappears from the box model so its two
+    // children (.nav-links / .nav-actions) become direct grid items and
+    // land in the centered / right-hand grid tracks.
+    .nav-menu {
+        display: contents;
+    }
+
+    .nav-links {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        justify-content: center;
+        gap: 1.75rem;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -51,8 +60,15 @@
         }
     }
 
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-self: end;
+    }
+
     .nav-link,
-    .menu-ul a {
+    .nav-links a {
         padding: 0.5rem 0;
         color: inherit;
         font-size: 13px;
@@ -73,10 +89,6 @@
         padding-bottom: 4px;
     }
 
-    .menu-ul__cv {
-        margin-left: 0.5rem;
-    }
-
     .cv-btn {
         padding: 7px 15px !important;
     }
@@ -84,7 +96,6 @@
     .link-buttons-container {
         display: flex;
         gap: 1rem;
-        margin-left: 0.5rem;
 
         .link-button {
             display: flex;
@@ -177,9 +188,12 @@
     font-family: var(--code-font);
 }
 
-.flag-emoji {
-    font-size: 16px;
-    line-height: 1;
+.flag-icon {
+    width: 20px;
+    height: 14px;
+    border-radius: 2px;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .language-container-selector--first {
@@ -277,11 +291,18 @@
 // Menu mobile (tablette + téléphone)
 @media (max-width: 900px) {
     .main-navbar {
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
         .menu-toggle {
             display: flex;
         }
 
-        .menu-ul {
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
             position: fixed;
             top: 0;
             right: 0;
@@ -289,10 +310,9 @@
             z-index: 18;
             width: min(320px, 80vw);
             height: 100vh;
-            flex-direction: column;
             align-items: flex-start;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem;
             padding: 2rem;
             background: var(--bg-panel);
             box-shadow: -10px 0 30px -15px rgba(2, 12, 27, 0.5);
@@ -302,25 +322,36 @@
             &--open {
                 transform: translateX(0);
             }
+        }
+
+        .nav-links {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.5rem;
+            width: 100%;
 
             li {
                 width: 100%;
             }
 
-            .menu-ul a {
+            a {
                 font-size: 1rem;
             }
 
-            .menu-ul__cv {
-                margin-left: 0;
-
-                .cv-btn {
-                    display: inline-block;
-                    width: fit-content;
-                }
+            &__cv .cv-btn {
+                display: inline-block;
+                width: fit-content;
             }
+        }
 
-            .menu-ul__lang {
+        .nav-actions {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.25rem;
+            width: 100%;
+            margin-top: auto;
+
+            &__lang {
                 width: 100%;
 
                 div[ngbDropdown] {
@@ -332,12 +363,8 @@
                 }
             }
 
-            .menu-ul__socials {
-                margin-top: auto;
-
-                .link-buttons-container {
-                    margin-left: 0;
-                }
+            .link-buttons-container {
+                margin-left: 0;
             }
         }
     }

@@ -157,19 +157,19 @@
 @media (max-width: 768px) {
     .banner {
         min-height: auto;
-        padding: 4rem 0 2rem;
+        padding: 6.5rem 0 3rem;
 
         .container {
             grid-template-columns: 1fr;
-            gap: 2rem;
-            padding: 0 1rem;
+            gap: 1.5rem;
+            padding: 0 1.25rem;
 
             .photo-profil-container {
                 order: 1;
-                margin-bottom: 1rem;
+                margin-bottom: 0.5rem;
 
                 .photo-profil-frame {
-                    max-width: 250px;
+                    max-width: 140px;
                 }
             }
 
@@ -181,9 +181,44 @@
                     margin-top: 0;
                 }
 
-                .banner-description p {
-                    max-width: 100%;
+                .banner-pretitle h1 {
+                    font-size: 0.9375rem;
+                    margin: 0 0 0.75rem;
                 }
+
+                .banner-name {
+                    font-size: 2.25rem;
+                    white-space: normal;
+                }
+
+                .banner-subtitle {
+                    font-size: 1.25rem;
+                }
+
+                .banner-description {
+                    margin-bottom: 2rem;
+
+                    p {
+                        max-width: 100%;
+                        font-size: 1.0625rem;
+                        line-height: 1.6;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Petits téléphones
+@media (max-width: 380px) {
+    .banner {
+        .container {
+            .photo-profil-container .photo-profil-frame {
+                max-width: 120px;
+            }
+
+            .section-box-banner .banner-name {
+                font-size: 1.875rem;
             }
         }
     }
