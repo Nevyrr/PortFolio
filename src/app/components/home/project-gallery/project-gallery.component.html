@@ -1,0 +1,12 @@
+<div class="project-gallery" *ngIf="images.length">
+    <div class="project-gallery-track" #track (scroll)="onScroll()">
+        <div class="project-gallery-slide" *ngFor="let img of images">
+            <img [src]="img" [alt]="alt" loading="lazy" />
+        </div>
+    </div>
+
+    <div class="project-gallery-dots" *ngIf="images.length > 1">
+        <button type="button" *ngFor="let img of images; let i = index" class="project-gallery-dot"
+            [class.active]="activeIndex === i" [attr.aria-label]="'Image ' + (i + 1)" (click)="goTo(i)"></button>
+    </div>
+</div>

@@ -1,5 +1,14 @@
-import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import { AnimationsService } from '../../../services/animations/animations.service';
+
+interface Job {
+  Tab: string;
+  Title: string;
+  Date: string;
+  Description: string[];
+}
 
 @Component({
     selector: 'app-jobs',
@@ -7,20 +16,31 @@ import { AnimationsService } from '../../../services/animations/animations.servi
     styleUrls: ['./jobs.component.scss'],
     standalone: false
 })
-export class JobsComponent implements OnInit, AfterViewInit {
+export class JobsComponent implements AfterViewInit, OnDestroy {
 
   active: number = 0;
+  jobs: Job[] = [];
+
+  private jobsSubscription: Subscription;
 
   constructor(
     private animationsService: AnimationsService,
-    private elementRef: ElementRef
-  ) { }
-
-  ngOnInit(): void {
+    private elementRef: ElementRef,
+    private translateService: TranslateService
+  ) {
+    this.jobsSubscription = this.translateService.stream('Experience.Jobs').subscribe((jobs: Job[]) => {
+      this.jobs = jobs;
+      this.active = 0;
+      setTimeout(() => this.animateTabs(), 0);
+    });
   }
 
   ngAfterViewInit(): void {
     this.initAnimations();
+  }
+
+  ngOnDestroy(): void {
+    this.jobsSubscription.unsubscribe();
   }
 
   private initAnimations(): void {
@@ -42,26 +62,27 @@ export class JobsComponent implements OnInit, AfterViewInit {
         delay: 300
       });
     }
+  }
 
-    const tabs = jobsSection.querySelectorAll('li[ngbNavItem]');
+  private animateTabs(): void {
+    const jobsSection = this.elementRef.nativeElement;
+
+    const tabs = jobsSection.querySelectorAll('.jobs-tab-list li');
     tabs.forEach((tab: HTMLElement, index: number) => {
       this.animationsService.observeElement(tab, {
         type: 'scaleIn',
         delay: 600 + (index * 150)
       });
 
-      // Ajouter les effets au survol
       this.animationsService.addHoverEffects(tab, ['lift']);
     });
 
-    setTimeout(() => {
-      const jobDescriptions = jobsSection.querySelectorAll('.job-description');
-      jobDescriptions.forEach((desc: HTMLElement, index: number) => {
-        this.animationsService.observeElement(desc, {
-          type: 'fadeInLeft',
-          delay: index * 200
-        });
+    const jobDescriptions = jobsSection.querySelectorAll('.job-description');
+    jobDescriptions.forEach((desc: HTMLElement, index: number) => {
+      this.animationsService.observeElement(desc, {
+        type: 'fadeInLeft',
+        delay: index * 200
       });
-    }, 500);
+    });
   }
 }

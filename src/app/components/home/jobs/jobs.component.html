@@ -8,41 +8,25 @@
         </h3>
       </div>
       <div class="jobs-tabs" data-animate="fadeInUp" data-animate-duration="600" data-animate-delay="300">
-        <ul
-          ngbNav
-          #nav="ngbNav"
-          [(activeId)]="active"
-          orientation="vertical"
-          class="nav-tabs jobs-tabs"
-        >
-          <li
-            *ngFor="let job of 'Experience.Jobs' | translate; let i = index"
-            [title]="job.Tab"
-            [ngbNavItem]="i"
-            data-animate="scaleIn"
-            [attr.data-animate-delay]="100 + (i * 150)"
-          >
-            <a ngbNavLink>{{ job.Tab }}</a>
-            <ng-template ngbNavContent>
-              <h4 class="title-tab-content">
-                {{ job.Title }} |
-                <span class="company-tab-content">{{ job.Tab }}</span>
-              </h4>
-              <h5 class="job-time">{{ job.Date }}</h5>
-              <p
-                *ngFor="
-                  let jobDescriptionParagraph of job.Description;
-                  let i = index
-                "
-                class="job-description"
-                [innerHTML]="jobDescriptionParagraph | translate"
-                data-animate="fadeInLeft"
-                [attr.data-animate-delay]="i * 100"
-              ></p>
-            </ng-template>
+        <ul class="jobs-tab-list" role="tablist">
+          <li *ngFor="let job of jobs; let i = index" role="presentation"
+            data-animate="scaleIn" [attr.data-animate-delay]="100 + (i * 150)">
+            <button type="button" role="tab" class="jobs-tab" [class.active]="active === i"
+              [attr.aria-selected]="active === i" (click)="active = i">
+              {{ job.Tab }}
+            </button>
           </li>
         </ul>
-        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        <div class="jobs-tab-panel" role="tabpanel" *ngIf="jobs[active] as job">
+          <h4 class="title-tab-content">
+            {{ job.Title }} |
+            <span class="company-tab-content">{{ job.Tab }}</span>
+          </h4>
+          <h5 class="job-time">{{ job.Date }}</h5>
+          <p *ngFor="let jobDescriptionParagraph of job.Description; let i = index" class="job-description"
+            [innerHTML]="jobDescriptionParagraph | translate" data-animate="fadeInLeft"
+            [attr.data-animate-delay]="i * 100"></p>
+        </div>
       </div>
     </div>
   </div>

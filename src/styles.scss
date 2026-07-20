@@ -24,6 +24,7 @@ body {
 .section {
   background: var(--bg);
   transition: background-color 0.3s ease;
+  scroll-margin-top: 5.5rem;
 }
 
 .code-font {

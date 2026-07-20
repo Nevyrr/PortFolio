@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ElementRef } from '@angular/core';
 import { AnimationsService } from '../../../services/animations/animations.service';
 
 @Component({
@@ -7,15 +7,12 @@ import { AnimationsService } from '../../../services/animations/animations.servi
     styleUrls: ['./contact.component.scss'],
     standalone: false
 })
-export class ContactComponent implements OnInit, AfterViewInit {
+export class ContactComponent implements AfterViewInit {
 
   constructor(
     private animationsService: AnimationsService,
     private elementRef: ElementRef
   ) { }
-
-  ngOnInit(): void {
-  }
 
   ngAfterViewInit(): void {
     this.initAnimations();

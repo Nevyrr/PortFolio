@@ -1,45 +1,45 @@
-<nav [@animateMenu] class="navbar main-navbar on-top">
-    <div class="container">
-        <ul ngbNav #nav="ngbNav" class="menu-ul">
-            <li ngbNavItem>
-                <a ngbNavLink (click)='scroll("about")'><span class='nav-number'>01. </span> <span
-                        class="underline nav-text"> {{"Header.Item1" | translate}}</span></a>
-                <ng-template ngbNavContent>First content</ng-template>
+<nav class="main-navbar" [class.nav-shadow]="scrolled">
+    <div class="container nav-container">
+        <button type="button" class="nav-brand" (click)="scroll('about')" aria-label="Clément Davin">
+            <img src="assets/images/davin-icon.png" alt="" class="davin-icon" />
+        </button>
+
+        <button type="button" class="menu-toggle" (click)="toggleMobileMenu()" [class.is-open]="responsiveMenuVisible"
+            aria-label="Menu" [attr.aria-expanded]="responsiveMenuVisible" aria-controls="primary-navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="menu-ul" id="primary-navigation" [class.menu-ul--open]="responsiveMenuVisible">
+            <li>
+                <a (click)="scroll('about')"><span class='nav-number'>01. </span> <span
+                        class="underline nav-text">{{"Header.Item1" | translate}}</span></a>
             </li>
-            <li ngbNavItem>
-                <a ngbNavLink (click)='scroll("jobs")'><span class='nav-number'>02. </span> <span
-                        class="underline nav-text"> {{"Header.Item2" | translate}}</span></a>
-                <ng-template ngbNavContent>Second content</ng-template>
+            <li>
+                <a (click)="scroll('jobs')"><span class='nav-number'>02. </span> <span
+                        class="underline nav-text">{{"Header.Item2" | translate}}</span></a>
             </li>
-            <li ngbNavItem>
-                <a ngbNavLink (click)='scroll("projects")'><span class='nav-number'>03. </span> <span
-                        class="underline nav-text"> {{"Header.Item3" | translate}}</span></a>
-                <ng-template ngbNavContent>Second content</ng-template>
+            <li>
+                <a (click)="scroll('projects')"><span class='nav-number'>03. </span> <span
+                        class="underline nav-text">{{"Header.Item3" | translate}}</span></a>
             </li>
-            <li ngbNavItem>
-                <a ngbNavLink (click)='scroll("contact")'><span class='nav-number'>04. </span> <span
-                        class="underline nav-text"> {{"Header.Item4" | translate}}</span></a>
-                <ng-template ngbNavContent>Second content</ng-template>
+            <li>
+                <a (click)="scroll('contact')"><span class='nav-number'>04. </span> <span
+                        class="underline nav-text">{{"Header.Item4" | translate}}</span></a>
             </li>
-            <li ngbNavItem>
-                <a (click)="downloadCV()" class="main-btn cv-btn" ngbNavLink>
+            <li class="menu-ul__cv">
+                <a (click)="downloadCV()" class="main-btn cv-btn">
                     {{"Header.cvBtn" | translate}}
                 </a>
             </li>
-            <li ngbNavItem>
-                <a (click)="toggleTheme()" class="main-btn cv-btn" ngbNavLink>
-                    Switch Theme
-                </a>
-            </li>
-            <li>
+            <li class="menu-ul__lang">
                 <div ngbDropdown class="d-inline-block">
                     <div class="language-container" id="dropdownForm1" ngbDropdownToggle>
-                        <img *ngIf='languageFormControl.value == "en"' width="20px"
-                            src="https://www.worldometers.info/img/flags/us-flag.gif" alt="English">
+                        <span *ngIf='languageFormControl.value == "en"' class="flag-emoji">🇬🇧</span>
                         <span *ngIf='languageFormControl.value == "en"' class="flag-text">English</span>
 
-                        <img *ngIf='languageFormControl.value == "fr"' width="20px"
-                            src="https://www.worldometers.info/img/flags/fr-flag.gif" alt="Français">
+                        <span *ngIf='languageFormControl.value == "fr"' class="flag-emoji">🇫🇷</span>
                         <span *ngIf='languageFormControl.value == "fr"' class="flag-text">Français</span>
                         <svg class='arrow-language' xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24">
@@ -48,10 +48,9 @@
                     </div>
                     <div ngbDropdownMenu aria-labelledby="dropdownForm1">
                         <div (click)='changeLanguage("fr")'
-                            style='border-bottom-left-radius: 0px !important;border-bottom-right-radius: 0px !important;'
-                            class="language-container language-container-selector active"
+                            class="language-container language-container-selector language-container-selector--first"
                             [class.active]='languageFormControl.value == "fr"'>
-                            <img width="20px" src="https://www.worldometers.info/img/flags/fr-flag.gif" alt="Français">
+                            <span class="flag-emoji">🇫🇷</span>
                             <span class="flag-text">Français</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-check2 arrow-active" viewBox="0 0 16 16">
@@ -60,10 +59,9 @@
                             </svg>
                         </div>
                         <div (click)='changeLanguage("en")'
-                            style="margin-top: 1px !important; border-top-left-radius: 0px !important; border-top-right-radius: 0px !important;"
-                            class="language-container language-container-selector"
+                            class="language-container language-container-selector language-container-selector--last"
                             [class.active]='languageFormControl.value == "en"'>
-                            <img width="20px" src="https://www.worldometers.info/img/flags/us-flag.gif" alt="English">
+                            <span class="flag-emoji">🇬🇧</span>
                             <span class="flag-text">English</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-check2 arrow-active" viewBox="0 0 16 16">
@@ -74,21 +72,26 @@
                     </div>
                 </div>
             </li>
-            <li>
+            <li class="menu-ul__theme">
+                <a (click)="toggleTheme()" class="theme-toggle"
+                    [attr.aria-label]="isDarkTheme ? 'Activer le thème clair' : 'Activer le thème sombre'">
+                    <i class="fas" [class.fa-sun]="isDarkTheme" [class.fa-moon]="!isDarkTheme"></i>
+                </a>
+            </li>
+            <li class="menu-ul__socials">
                 <div class="link-buttons-container">
-                    <a class="link-button" href="https://github.com/Nevyrr" target='_blank'>
+                    <a class="link-button" href="https://github.com/Nevyrr" target='_blank' rel="noopener">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a class="link-button" href="https://www.linkedin.com/in/cl%C3%A9ment-davin-6baba2180/" target='_blank'>
+                    <a class="link-button" href="https://www.linkedin.com/in/cl%C3%A9ment-davin-6baba2180/"
+                        target='_blank' rel="noopener">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
-
-            </li>
-            <li>
-
             </li>
         </ul>
+
+        <button type="button" class="menu-backdrop" *ngIf="responsiveMenuVisible" [@fadeIn] (click)="closeMobileMenu()"
+            aria-label="Fermer le menu"></button>
     </div>
-    <img src="assets/images/davin-icon.png" alt="Mon icône" class="davin-icon" />
 </nav>

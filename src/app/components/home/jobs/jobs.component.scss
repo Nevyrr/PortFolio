@@ -1,22 +1,28 @@
-::ng-deep .jobs .jobs-tabs {
+.jobs-tabs {
     display: flex;
     gap: 2rem;
 
-    .tab-content {
+    .jobs-tab-panel {
         flex: 1;
         margin-left: 0;
+        min-width: 0;
     }
 
-    ul {
+    .jobs-tab-list {
         display: block;
         width: 200px;
         min-width: 200px;
         border: none;
         padding: 0;
         margin: 0;
+        list-style: none;
+
+        li {
+            border-left: 2px solid var(--border);
+        }
     }
 
-    a {
+    .jobs-tab {
         display: flex;
         align-items: center;
         width: 100%;
@@ -26,7 +32,9 @@
         font-family: var(--code-font);
         font-size: 0.8125rem;
         background-color: transparent;
-        border-left: 2px solid var(--border);
+        border: none;
+        border-left: 2px solid transparent;
+        margin-left: -2px;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
         text-align: left;
@@ -43,10 +51,6 @@
             color: var(--primary);
             border-left-color: var(--primary);
         }
-    }
-
-    li {
-        border-left: 2px solid var(--border);
     }
 }
 
@@ -74,7 +78,7 @@
         color: var(--text-muted);
         margin-bottom: 1.5rem;
     }
-    
+
     .job-description {
         position: relative;
         padding-left: 1.75rem;
@@ -92,6 +96,7 @@
         }
     }
 }
+
 @media (max-width: 768px) {
     .jobs {
         .job-description {
@@ -99,24 +104,31 @@
         }
     }
 
-    ::ng-deep .jobs-tabs {
+    .jobs-tabs {
         flex-direction: column;
 
-        .tab-content {
+        .jobs-tab-panel {
             margin-left: 0;
         }
 
-        ul {
+        .jobs-tab-list {
             width: 100%;
+            min-width: 0;
             margin-bottom: 2rem;
             display: flex;
             overflow-x: auto;
             gap: 0.5rem;
+
+            li {
+                border-left: none;
+                flex: 0 0 auto;
+            }
         }
 
-        a {
+        .jobs-tab {
             border-left: none;
             border-bottom: 2px solid var(--border);
+            margin-left: 0;
             padding: 0.75rem 1rem;
             white-space: nowrap;
 
@@ -130,10 +142,6 @@
                 border-bottom-color: var(--primary);
             }
         }
-
-        li {
-            border-left: none;
-        }
     }
 }
 
@@ -143,8 +151,8 @@
         max-width: 1200px;
     }
 
-    ::ng-deep .jobs .jobs-tabs {
-        ul {
+    .jobs-tabs {
+        .jobs-tab-list {
             width: 220px;
             min-width: 220px;
         }

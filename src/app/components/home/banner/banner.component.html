@@ -4,24 +4,26 @@
         <div class="section-box section-box-banner">
             <div class="content">
                 <div class="banner-pretitle">
-                    <h1>{{"Banner.Pretitle" | translate}}</h1>
+                    <h1 data-animate="fadeInDown" data-animate-duration="600" data-animate-delay="100">{{"Banner.Pretitle" | translate}}</h1>
                 </div>
                 <div class='banner-title'>
-                    <h2 class="banner-name">Clément Davin.</h2>
-                    <h3 class="banner-subtitle">{{"Banner.subtitle" | translate}}</h3>
+                    <h2 class="banner-name" data-animate="typewriter" data-animate-delay="800">Clément Davin.</h2>
+                    <h3 class="banner-subtitle" data-animate="fadeInUp" data-animate-duration="500" data-animate-delay="1800">{{"Banner.subtitle" | translate}}</h3>
                 </div>
-                <div class='banner-description'>
+                <div class='banner-description' data-animate="morphIn" data-animate-duration="1000" data-animate-delay="2400">
                     <p [innerHTML]='"Banner.Description" | translate' class="mt-4"></p>
                 </div>
             </div>
-            <div class="div-btn-banner">
+            <div class="div-btn-banner" data-animate="scaleIn" data-animate-duration="500" data-animate-delay="3000">
                 <a href="mailto:clement.davin998@gmail.com" class="btn btn-primary">
                     {{ "Banner.ActionBtn" | translate }}
                 </a>
             </div>
         </div>
         <div class="photo-profil-container">
-            <img src="assets/images/photo-profil.png" class="photo-profil" alt="Ma photo" />
+            <div class="photo-profil-frame">
+                <img src="assets/images/photo-profil.png" class="photo-profil" alt="Ma photo" />
+            </div>
         </div>
     </div>
 </section>

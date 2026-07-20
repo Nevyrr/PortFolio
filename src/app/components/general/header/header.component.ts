@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { trigger, style, query, transition, stagger, animate } from '@angular/animations';
+import { trigger, style, transition, animate } from '@angular/animations';
 import { UntypedFormControl } from '@angular/forms';
 import { LanguageService } from '../../../services/language/language.service';
 
@@ -9,14 +9,13 @@ import { LanguageService } from '../../../services/language/language.service';
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
     animations: [
-        trigger("animateMenu", [
-            transition(":enter", [
-                query("*", [
-                    style({ opacity: 0, transform: "translateY(-50%)" }),
-                    stagger(50, [
-                        animate("250ms cubic-bezier(0.35, 0, 0.25, 1)", style({ opacity: 1, transform: "none" }))
-                    ])
-                ])
+        trigger('fadeIn', [
+            transition(':enter', [
+                style({ opacity: 0 }),
+                animate('200ms ease-out', style({ opacity: 1 }))
+            ]),
+            transition(':leave', [
+                animate('200ms ease-in', style({ opacity: 0 }))
             ])
         ])
     ],
@@ -25,10 +24,13 @@ import { LanguageService } from '../../../services/language/language.service';
 export class HeaderComponent implements OnInit {
 
     responsiveMenuVisible: boolean = false;
+    scrolled: boolean = false;
     languageFormControl: UntypedFormControl = new UntypedFormControl();
+    isDarkTheme: boolean = true;
 
     constructor(
         private router: Router,
+        private elementRef: ElementRef,
         public languageService: LanguageService
     ) { }
 
@@ -36,8 +38,33 @@ export class HeaderComponent implements OnInit {
         this.languageFormControl.valueChanges.subscribe(val => this.languageService.changeLanguage(val));
         this.languageFormControl.setValue(this.languageService.language);
 
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.body.setAttribute('data-bs-theme', savedTheme);
+        this.isDarkTheme = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+    }
+
+    @HostListener('window:scroll')
+    public onWindowScroll(): void {
+        this.scrolled = window.scrollY > 20;
+    }
+
+    @HostListener('document:keydown.escape')
+    public onEscape(): void {
+        this.closeMobileMenu();
+    }
+
+    @HostListener('document:click', ['$event'])
+    public onDocumentClick(event: MouseEvent): void {
+        if (!this.responsiveMenuVisible) return;
+        if (!this.elementRef.nativeElement.contains(event.target)) {
+            this.closeMobileMenu();
+        }
+    }
+
+    public toggleMobileMenu(): void {
+        this.responsiveMenuVisible = !this.responsiveMenuVisible;
+    }
+
+    public closeMobileMenu(): void {
+        this.responsiveMenuVisible = false;
     }
 
     public scroll(el: string): void {
@@ -53,13 +80,14 @@ export class HeaderComponent implements OnInit {
                 }
             });
         }
-        this.responsiveMenuVisible = false;
+        this.closeMobileMenu();
     }
 
     public downloadCV(): void {
-        this.languageService.translateService.get("Header.cvName").subscribe(cvName => {
-            window.open(window.location.href + "/../assets/cv/" + cvName, "_blank");
+        this.languageService.translateService.get('Header.cvName').subscribe(cvName => {
+            window.open(window.location.href + '/../assets/cv/' + cvName, '_blank');
         });
+        this.closeMobileMenu();
     }
 
     public changeLanguage(language: string): void {
@@ -67,10 +95,11 @@ export class HeaderComponent implements OnInit {
     }
 
     public toggleTheme(): void {
-        const body = document.body;
-        const currentTheme = body.getAttribute('data-bs-theme') || 'light';
+        const root = document.documentElement;
+        const currentTheme = root.getAttribute('data-bs-theme') || 'dark';
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        body.setAttribute('data-bs-theme', newTheme);
+        root.setAttribute('data-bs-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+        this.isDarkTheme = newTheme === 'dark';
     }
 }
