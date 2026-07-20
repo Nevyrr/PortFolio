@@ -1,0 +1,143 @@
+.experience-tabs {
+  display: flex;
+  gap: 2rem;
+}
+
+.experience-tab-panel {
+  flex: 1;
+  min-width: 0;
+}
+
+.experience-tab-list {
+  display: block;
+  width: 200px;
+  min-width: 200px;
+
+  li {
+    border-left: 2px solid var(--border);
+  }
+}
+
+.experience-tab {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  color: var(--text-subheading);
+  font-family: var(--code-font);
+  font-size: 0.8125rem;
+  border-left: 2px solid transparent;
+  margin-left: -2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: var(--hover);
+    color: var(--primary);
+    border-left-color: var(--primary);
+  }
+
+  &.active {
+    background-color: var(--bg-panel);
+    color: var(--primary);
+    border-left-color: var(--primary);
+  }
+}
+
+.experience {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title-tab-content {
+  color: var(--text-heading);
+  font-size: clamp(1.25rem, 3vw, 1.375rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+
+  .company-tab-content {
+    color: var(--primary);
+  }
+}
+
+.job-time {
+  font-family: var(--code-font);
+  font-size: 0.8125rem;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.job-description {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-subheading);
+
+  &:before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .job-description {
+    padding-left: 1.25rem;
+  }
+
+  .experience-tabs {
+    flex-direction: column;
+  }
+
+  .experience-tab-list {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 2rem;
+    display: flex;
+    overflow-x: auto;
+    gap: 0.5rem;
+
+    li {
+      border-left: none;
+      flex: 0 0 auto;
+    }
+  }
+
+  .experience-tab {
+    border-left: none;
+    border-bottom: 2px solid var(--border);
+    margin-left: 0;
+    padding: 0.75rem 1rem;
+    white-space: nowrap;
+
+    &.active {
+      border-left: none;
+      border-bottom-color: var(--primary);
+    }
+
+    &:hover {
+      border-left: none;
+      border-bottom-color: var(--primary);
+    }
+  }
+}
+
+// Grands écrans
+@media (min-width: 1921px) {
+  .experience {
+    max-width: 1200px;
+  }
+
+  .experience-tab-list {
+    width: 220px;
+    min-width: 220px;
+  }
+}

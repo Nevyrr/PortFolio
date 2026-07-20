@@ -1,0 +1,163 @@
+<nav class="main-navbar" [class.nav-shadow]="scrolled()">
+  <div class="container nav-container">
+    <button type="button" class="nav-brand" (click)="scroll('about')" aria-label="Clément Davin">
+      <img src="assets/images/davin-icon.png" alt="" class="davin-icon" />
+    </button>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      [class.is-open]="mobileMenuOpen()"
+      (click)="toggleMobileMenu()"
+      aria-label="Menu"
+      [attr.aria-expanded]="mobileMenuOpen()"
+      aria-controls="primary-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-menu" id="primary-navigation" [class.nav-menu--open]="mobileMenuOpen()">
+      <ul class="nav-links">
+        <li>
+          <button type="button" (click)="scroll('about')">
+            <span class="nav-number">01. </span>
+            <span class="underline nav-text">{{ 'Header.Item1' | translate }}</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" (click)="scroll('experience')">
+            <span class="nav-number">02. </span>
+            <span class="underline nav-text">{{ 'Header.Item2' | translate }}</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" (click)="scroll('projects')">
+            <span class="nav-number">03. </span>
+            <span class="underline nav-text">{{ 'Header.Item3' | translate }}</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" (click)="scroll('contact')">
+            <span class="nav-number">04. </span>
+            <span class="underline nav-text">{{ 'Header.Item4' | translate }}</span>
+          </button>
+        </li>
+        <li class="nav-links__cv">
+          <button type="button" (click)="downloadCV()" class="main-btn cv-btn">
+            {{ 'Header.cvBtn' | translate }}
+          </button>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-dropdown" [class.open]="languageMenuOpen()">
+          <button
+            type="button"
+            class="language-container"
+            (click)="toggleLanguageMenu()"
+            [attr.aria-expanded]="languageMenuOpen()"
+          >
+            @if (language() === 'en') {
+              <img src="assets/icons/flags/gb.svg" class="flag-icon" alt="" />
+              <span class="flag-text">English</span>
+            } @else {
+              <img src="assets/icons/flags/fr.svg" class="flag-icon" alt="" />
+              <span class="flag-text">Français</span>
+            }
+            <svg
+              class="arrow-language"
+              [class.rotated]="languageMenuOpen()"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+            </svg>
+          </button>
+
+          @if (languageMenuOpen()) {
+            <div class="language-menu">
+              <button
+                type="button"
+                (click)="changeLanguage('fr')"
+                class="language-container language-container-selector language-container-selector--first"
+                [class.active]="language() === 'fr'"
+              >
+                <img src="assets/icons/flags/fr.svg" class="flag-icon" alt="" />
+                <span class="flag-text">Français</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="arrow-active"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"
+                  />
+                </svg>
+              </button>
+              <button
+                type="button"
+                (click)="changeLanguage('en')"
+                class="language-container language-container-selector language-container-selector--last"
+                [class.active]="language() === 'en'"
+              >
+                <img src="assets/icons/flags/gb.svg" class="flag-icon" alt="" />
+                <span class="flag-text">English</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="arrow-active"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+          }
+        </div>
+
+        <button
+          type="button"
+          (click)="toggleTheme()"
+          class="theme-toggle"
+          [attr.aria-label]="isDarkTheme() ? 'Activer le thème clair' : 'Activer le thème sombre'"
+        >
+          <i class="fas" [class.fa-sun]="isDarkTheme()" [class.fa-moon]="!isDarkTheme()"></i>
+        </button>
+
+        <div class="link-buttons-container">
+          <a class="link-button" href="https://github.com/Nevyrr" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            class="link-button"
+            href="https://www.linkedin.com/in/cl%C3%A9ment-davin-6baba2180/"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="menu-backdrop"
+      [class.is-visible]="mobileMenuOpen()"
+      (click)="closeMobileMenu()"
+      aria-label="Fermer le menu"
+      tabindex="-1"
+    ></button>
+  </div>
+</nav>

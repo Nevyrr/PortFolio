@@ -1,0 +1,257 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+  padding: 6rem 0 4rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 12% 20%, rgba(79, 70, 229, 0.14), transparent 45%),
+      radial-gradient(circle at 88% 78%, rgba(108, 99, 255, 0.12), transparent 50%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      linear-gradient(rgba(79, 70, 229, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79, 70, 229, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(circle at 50% 0%, black, transparent 70%);
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-photo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+  }
+
+  .hero-photo-frame {
+    position: relative;
+    max-width: 350px;
+    width: 100%;
+    padding: 6px;
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+    box-shadow: 0 20px 60px rgba(79, 70, 229, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02) rotate(-0.5deg);
+      box-shadow: 0 25px 70px rgba(79, 70, 229, 0.35);
+    }
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    background-color: var(--bg-panel);
+  }
+
+  .hero-content-box {
+    order: 1;
+
+    .content {
+      position: relative;
+      z-index: 4;
+    }
+  }
+
+  .hero-pretitle h1 {
+    color: var(--primary);
+    margin: 0 0 1.25rem 0.25rem;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: normal;
+    font-family: var(--code-font);
+  }
+
+  .hero-name {
+    font-weight: 600;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1.1;
+    font-family: var(--main-font);
+    color: var(--text-heading);
+    white-space: nowrap;
+  }
+
+  .hero-subtitle {
+    font-weight: 600;
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    font-family: var(--main-font);
+    color: var(--text-subheading);
+  }
+
+  .hero-description {
+    margin: 1.5rem 0 3rem;
+
+    p {
+      max-width: 600px;
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      line-height: 1.7;
+      color: var(--text-subheading);
+    }
+  }
+
+  .hero-cta {
+    margin: 2rem 0;
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-weight: 600;
+      padding: 0.875rem 2rem;
+      border-radius: 6px;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: var(--code-font);
+      font-size: 0.875rem;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+        color: white;
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// Mobile
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 6.5rem 0 3rem;
+
+    .container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 0 1.25rem;
+    }
+
+    .hero-photo-container {
+      order: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-photo-frame {
+      max-width: 140px;
+    }
+
+    .hero-content-box {
+      order: 2;
+      text-align: center;
+
+      .content {
+        margin-top: 0;
+      }
+    }
+
+    .hero-pretitle h1 {
+      font-size: 0.9375rem;
+      margin: 0 0 0.75rem;
+    }
+
+    .hero-name {
+      font-size: 2.25rem;
+      white-space: normal;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+
+    .hero-description {
+      margin: 1rem 0 2rem;
+
+      p {
+        max-width: 100%;
+        font-size: 1.0625rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+// Petits téléphones
+@media (max-width: 380px) {
+  .hero {
+    .hero-photo-frame {
+      max-width: 120px;
+    }
+
+    .hero-name {
+      font-size: 1.875rem;
+    }
+  }
+}
+
+// Tablette
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero {
+    .container {
+      gap: 3rem;
+    }
+
+    .hero-photo-frame {
+      max-width: 280px;
+    }
+  }
+}
+
+// Desktop standard (24 pouces)
+@media (min-width: 1025px) and (max-width: 1920px) {
+  .hero .container {
+    gap: 4rem;
+  }
+}
+
+// Grands écrans (2K)
+@media (min-width: 1921px) {
+  .hero {
+    .container {
+      max-width: 1400px;
+      gap: 5rem;
+      padding: 0 3rem;
+    }
+
+    .hero-photo-frame {
+      max-width: 400px;
+    }
+
+    .hero-description p {
+      max-width: 700px;
+    }
+  }
+}

@@ -29,7 +29,7 @@
   --bg-panel: #FFFFFF;
   --border: #a2c1ff;
   --hover: #E0E7FF;
-  
+
   /* Ombres élégantes */
   --shadow-xs: 0 1px 3px rgba(79, 70, 229, 0.08);
   --shadow-sm: 0 2px 8px rgba(79, 70, 229, 0.1);
@@ -51,7 +51,7 @@
 /* =========================
    🌙 Thème sombre (Dark)
    ========================= */
-[data-bs-theme="dark"] {
+[data-theme="dark"] {
   /* Couleurs principales */
   --primary: #6C63FF;
   --secondary: #9F8CFF;
@@ -69,7 +69,7 @@
   --bg-panel: #1d2f4d;
   --border: #2d54a3;
   --hover: #1C2A4A;
-  
+
   /* Ombres élégantes */
   --shadow-xs: 0 1px 3px rgba(108, 99, 255, 0.15);
   --shadow-sm: 0 2px 8px rgba(108, 99, 255, 0.2);
@@ -86,24 +86,4 @@
   /* Sous-titres H3/H4 */
   --text-muted: #94A3B8;
   /* Texte secondaire */
-}
-
-/* =========================
-   🔹 Bootstrap Integration
-   ========================= */
-:root,
-[data-bs-theme="dark"] {
-  --bs-body-bg: var(--bg);
-  --bs-body-color: var(--text-main);
-  --bs-primary: var(--primary);
-  --bs-secondary: var(--secondary);
-  --bs-border-color: var(--border);
-
-  /* Boutons Bootstrap */
-  --bs-btn-bg: var(--btn-bg);
-  --bs-btn-border-color: var(--btn-border);
-  --bs-btn-color: #fff;
-  --bs-btn-hover-bg: var(--btn-hover-bg);
-  --bs-btn-hover-border-color: var(--btn-hover-border);
-  --bs-btn-hover-color: #fff;
 }

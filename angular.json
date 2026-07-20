@@ -9,12 +9,6 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "i18n": {
-        "sourceLocale": "fr",
-        "locales": {
-          "en-US": "src/locale/messages.en.xlf"
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -38,7 +32,6 @@
             },
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss",
               "src/fonts.scss"
             ],
@@ -108,7 +101,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }

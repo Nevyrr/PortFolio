@@ -1,0 +1,61 @@
+.about {
+  .about-description {
+    margin-top: 2rem;
+    max-width: 800px;
+
+    p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      color: var(--text-subheading);
+    }
+  }
+
+  .skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin: 2rem 0 0;
+    max-width: 900px;
+  }
+
+  .skill-element {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.875rem;
+    font-family: var(--code-font);
+    color: var(--text-subheading);
+    transition: transform 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      transform: translateX(4px);
+      color: var(--primary);
+    }
+
+    span {
+      display: inline-block;
+    }
+
+    &:before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+  }
+}
+
+// Grands écrans
+@media (min-width: 1921px) {
+  .about {
+    .about-description {
+      max-width: 1000px;
+    }
+
+    .skills-list {
+      max-width: 1100px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+  }
+}

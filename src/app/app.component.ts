@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { LanguageService } from './services/language/language.service';
+import { Component, OnInit, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './layout/header/header.component';
+import { LanguageService } from './core/services/language.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: false
+  selector: 'app-root',
+  imports: [RouterOutlet, HeaderComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-    title = 'my-portfolio';
 
-    constructor(private languageService: LanguageService) { }
+  private readonly languageService = inject(LanguageService);
 
-    ngOnInit(): void {
-        this.languageService.initLanguage();
-    }
-
+  ngOnInit(): void {
+    this.languageService.init();
+  }
 }

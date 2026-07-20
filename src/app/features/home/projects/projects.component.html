@@ -1,0 +1,82 @@
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="section-box">
+      <h3 class="section-title">
+        <span class="n-section-title">03.</span> {{ 'FeatureProjects.Title' | translate }}
+      </h3>
+
+      @for (project of featuredProjects(); track project.Title; let i = $index) {
+        <div class="project-container">
+          <div class="project-box">
+            <h4 class="feature-project">{{ 'FeatureProjects.Label' | translate }}</h4>
+
+            <div class="project-header">
+              <span class="project-name">{{ project.Title }}</span>
+
+              <div class="project-links">
+                @if (project.ghLink) {
+                  <a [href]="project.ghLink" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                }
+                @if (project.demoLink) {
+                  <a [href]="project.demoLink" target="_blank" rel="noopener"
+                    ><i class="fas fa-external-link-alt"></i
+                  ></a>
+                }
+              </div>
+            </div>
+
+            <div class="project-description-box">
+              <p [innerHTML]="project.Description"></p>
+            </div>
+
+            <div class="project-gallery-wrapper">
+              <app-project-gallery [images]="project.imgs" [alt]="project.Title"></app-project-gallery>
+            </div>
+
+            <ul class="project-skills" [class.justify-end]="i % 2 === 0" [class.justify-start]="i % 2 !== 0">
+              @for (technology of project.Technologies; track technology) {
+                <li><span class="underline technology">{{ technology }}</span></li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+
+      @if (otherProjects().length) {
+        <div class="other-projects">
+          <h4 class="other-projects-title">{{ 'FeatureProjects.OtherTitle' | translate }}</h4>
+
+          <div class="other-projects-grid">
+            @for (project of otherProjects(); track project.Title) {
+              <div class="other-project-card">
+                <div class="other-project-card-header">
+                  <i class="fas fa-folder other-project-icon"></i>
+
+                  <div class="project-links">
+                    @if (project.ghLink) {
+                      <a [href]="project.ghLink" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                    }
+                    @if (project.demoLink) {
+                      <a [href]="project.demoLink" target="_blank" rel="noopener"
+                        ><i class="fas fa-external-link-alt"></i
+                      ></a>
+                    }
+                  </div>
+                </div>
+
+                <span class="other-project-name">{{ project.Title }}</span>
+                <p class="other-project-description" [innerHTML]="project.Description"></p>
+
+                <ul class="other-project-skills">
+                  @for (technology of project.Technologies; track technology) {
+                    <li>{{ technology }}</li>
+                  }
+                </ul>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

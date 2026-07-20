@@ -1,0 +1,33 @@
+<section class="section hero">
+  <div class="container">
+    <div class="section-box hero-content-box">
+      <div class="content">
+        <div class="hero-pretitle">
+          <h1 appReveal="fadeInDown" [revealDuration]="600" [revealDelay]="100">
+            {{ 'Banner.Pretitle' | translate }}
+          </h1>
+        </div>
+        <div class="hero-title">
+          <h2 class="hero-name" appReveal="typewriter" [revealDelay]="800">Clément Davin.</h2>
+          <h3 class="hero-subtitle" appReveal="fadeInUp" [revealDuration]="500" [revealDelay]="1800">
+            {{ 'Banner.subtitle' | translate }}
+          </h3>
+        </div>
+        <div class="hero-description" appReveal="morphIn" [revealDuration]="1000" [revealDelay]="2400">
+          <p [innerHTML]="'Banner.Description' | translate"></p>
+        </div>
+      </div>
+      <div class="hero-cta" appReveal="scaleIn" [revealDuration]="500" [revealDelay]="3000">
+        <a href="mailto:clement.davin998@gmail.com" class="btn-primary">
+          {{ 'Banner.ActionBtn' | translate }}
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-photo-container">
+      <div class="hero-photo-frame">
+        <img src="assets/images/photo-profil.png" class="hero-photo" alt="Photo de Clément Davin" />
+      </div>
+    </div>
+  </div>
+</section>

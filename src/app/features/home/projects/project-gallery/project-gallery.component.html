@@ -1,0 +1,25 @@
+@if (images().length) {
+  <div class="project-gallery">
+    <div class="project-gallery-track" #track (scroll)="onScroll()">
+      @for (img of images(); track img) {
+        <div class="project-gallery-slide">
+          <img [src]="img" [alt]="alt()" loading="lazy" />
+        </div>
+      }
+    </div>
+
+    @if (images().length > 1) {
+      <div class="project-gallery-dots">
+        @for (img of images(); track img; let i = $index) {
+          <button
+            type="button"
+            class="project-gallery-dot"
+            [class.active]="activeIndex() === i"
+            [attr.aria-label]="'Image ' + (i + 1)"
+            (click)="goTo(i)"
+          ></button>
+        }
+      </div>
+    }
+  </div>
+}

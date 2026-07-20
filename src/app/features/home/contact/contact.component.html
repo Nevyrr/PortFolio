@@ -1,0 +1,22 @@
+<section class="section" id="contact">
+  <div class="container contact">
+    <div class="section-box">
+      <div class="contact-heading" appReveal="fadeInDown" [revealDuration]="1000">
+        <h3 class="contact-pre-title">04. {{ 'Contact.Pretitle' | translate }}</h3>
+        <h4 class="e-font contact-title" appReveal="slideInUp" [revealDuration]="700" [revealDelay]="200">
+          {{ 'Contact.Title' | translate }}
+        </h4>
+      </div>
+
+      <p appReveal="morphIn" [revealDuration]="1000" [revealDelay]="1000">
+        {{ 'Contact.Content' | translate }}
+      </p>
+
+      <div class="contact-cta" appReveal="scaleIn" [revealDuration]="800" [revealDelay]="1800">
+        <a href="mailto:clement.davin998@gmail.com" class="btn-primary">
+          {{ 'Contact.Btn' | translate }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

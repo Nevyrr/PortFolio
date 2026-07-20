@@ -1,8 +1,39 @@
-@use "bootstrap/scss/bootstrap";
 @use "./_variables" as *;
 
-body {
+/* =========================
+   Reset minimal
+   ========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
   margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+body {
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
@@ -15,6 +46,7 @@ body {
   font-size: 18px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 .section-box {
   padding: 3rem 0 3rem;
   position: relative;
@@ -55,7 +87,7 @@ body {
     color: var(--primary);
     font-size: clamp(1rem, 2vw, 1.25rem);
     position: relative;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -130,6 +162,7 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 
   &:hover {
     text-decoration: none;
@@ -167,6 +200,80 @@ a {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+/* =========================
+   Reveal-on-scroll (appReveal directive)
+   ========================= */
+$reveal-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+.reveal-fade-in-up,
+.reveal-fade-in-down,
+.reveal-fade-in-left,
+.reveal-fade-in-right,
+.reveal-scale-in,
+.reveal-slide-in-up,
+.reveal-morph-in {
+  transition: opacity var(--reveal-duration, 800ms) $reveal-easing,
+              transform var(--reveal-duration, 800ms) $reveal-easing,
+              filter var(--reveal-duration, 800ms) $reveal-easing;
+}
+
+.reveal-fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.reveal-fade-in-down {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.reveal-fade-in-left {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+.reveal-fade-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+.reveal-scale-in {
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+.reveal-slide-in-up {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.reveal-morph-in {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(3px);
+}
+
+.reveal-active {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.reveal-caret {
+  border-right: 2px solid var(--primary);
+  animation: reveal-caret-blink 1s step-end infinite;
+}
+
+@keyframes reveal-caret-blink {
+  from, to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: var(--primary);
+  }
 }
 
 // Mobile First - Téléphone

@@ -1,0 +1,25 @@
+<section class="section about" id="about" tabindex="0">
+  <div class="container">
+    <div class="section-box">
+      <div class="about-title" appReveal="slideInUp" [revealDuration]="1000">
+        <h3 class="section-title">
+          <span class="n-section-title">01.</span> {{ 'AboutMe.Title' | translate }}
+        </h3>
+      </div>
+
+      <div class="about-description">
+        @for (paragraph of ('AboutMe.Paragraphs' | translate); track $index) {
+          <p [innerHTML]="paragraph" appReveal="fadeInLeft" [revealDuration]="400" [revealDelay]="100 + $index * 100"></p>
+        }
+
+        <ul class="skills-list" appReveal="fadeInUp" [revealDelay]="800">
+          @for (skill of skills; track skill) {
+            <li class="skill-element" appReveal="scaleIn" [revealDelay]="1000">
+              <span class="underline">{{ skill }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

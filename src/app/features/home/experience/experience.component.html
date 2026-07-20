@@ -1,0 +1,43 @@
+<section class="section" id="experience">
+  <div class="container experience">
+    <div class="section-box">
+      <div class="experience-title" appReveal="slideInUp" [revealDuration]="1000">
+        <h3 class="e-font section-title">
+          <span class="code-font n-section-title">02.</span>
+          {{ 'Experience.Title' | translate }}
+        </h3>
+      </div>
+
+      <div class="experience-tabs" appReveal="fadeInUp" [revealDuration]="600" [revealDelay]="300">
+        <ul class="experience-tab-list" role="tablist">
+          @for (job of jobs(); track job.Tab; let i = $index) {
+            <li role="presentation" appReveal="scaleIn" [revealDelay]="100 + i * 150">
+              <button
+                type="button"
+                role="tab"
+                class="experience-tab"
+                [class.active]="activeIndex() === i"
+                [attr.aria-selected]="activeIndex() === i"
+                (click)="selectTab(i)"
+              >
+                {{ job.Tab }}
+              </button>
+            </li>
+          }
+        </ul>
+
+        @if (jobs()[activeIndex()]; as job) {
+          <div class="experience-tab-panel" role="tabpanel">
+            <h4 class="title-tab-content">
+              {{ job.Title }} | <span class="company-tab-content">{{ job.Tab }}</span>
+            </h4>
+            <h5 class="job-time">{{ job.Date }}</h5>
+            @for (paragraph of job.Description; track $index) {
+              <p class="job-description" [innerHTML]="paragraph" appReveal="fadeInLeft" [revealDelay]="$index * 100"></p>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
